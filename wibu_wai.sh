@@ -75,6 +75,8 @@ module.exports = {
 };
 EOL
 
-echo "Setup complete. Please reboot to finalize installation."
+echo "Setup complete! 🎉"
+echo "Please reboot the system manually to finalize NVIDIA driver and CUDA installation."
+# Uncomment below if you want to force a reboot automatically:
 echo "Rebooting..."
 sudo reboot
