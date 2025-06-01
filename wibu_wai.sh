@@ -4,7 +4,7 @@ set -e
 
 # 1. Remove existing NVIDIA drivers and CUDA
 echo "Removing existing NVIDIA drivers and CUDA..."
-dpkg -l | grep -i nvidia
+dpkg -l | grep -i nvidia || true
 sudo apt-get remove --purge '^nvidia-.*' -y
 sudo apt remove --purge cuda -y
 sudo apt autoremove -y
@@ -78,5 +78,4 @@ EOL
 echo "Setup complete! 🎉"
 echo "Please reboot the system manually to finalize NVIDIA driver and CUDA installation."
 # Uncomment below if you want to force a reboot automatically:
-echo "Rebooting..."
-sudo reboot
+
