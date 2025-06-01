@@ -2,6 +2,9 @@
 
 set -e
 
+# Non-interactive setup
+export DEBIAN_FRONTEND=noninteractive
+
 # 1. Remove existing NVIDIA drivers and CUDA
 echo "Removing existing NVIDIA drivers and CUDA..."
 dpkg -l | grep -i nvidia || true
@@ -11,27 +14,27 @@ sudo apt autoremove -y || true
 
 # 2. Update system packages
 echo "Updating system packages..."
-sudo apt update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y -o Dpkg::Options::="--force-confold"
 
 # 3. Install general utilities and tools
 echo "Installing utilities and tools..."
-sudo apt install screen curl iptables build-essential git wget lz4 jq make gcc nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
+sudo apt install -y screen curl iptables build-essential git wget lz4 jq make gcc nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -o Dpkg::Options::="--force-confold"
 
 # 4. Install Python
 echo "Installing Python..."
-sudo apt install python3 python3-pip python3-venv python3-dev -y
+sudo apt install -y python3 python3-pip python3-venv python3-dev -o Dpkg::Options::="--force-confold"
 
 # 5. Install NodeJS
 echo "Installing NodeJS..."
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
-sudo apt install -y nodejs
+sudo apt install -y nodejs -o Dpkg::Options::="--force-confold"
 node -v
 npm install -g yarn
 yarn -v
 
 # 6. Install NVIDIA driver
 echo "Installing NVIDIA driver..."
-sudo apt install -y nvidia-driver-570
+sudo apt install -y nvidia-driver-570 -o Dpkg::Options::="--force-confold"
 
 # 7. Install CUDA 12.9.0
 echo "Installing CUDA..."
@@ -42,7 +45,7 @@ wget https://developer.download.nvidia.com/compute/cuda/12.9.0/local_installers/
 sudo dpkg -i cuda-repo-ubuntu2204-12-9-local_12.9.0-575.51.03-1_amd64.deb
 sudo cp /var/cuda-repo-ubuntu2204-12-9-local/cuda-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
-sudo apt-get -y install cuda-toolkit-12-9
+sudo apt-get install -y cuda-toolkit-12-9 -o Dpkg::Options::="--force-confold"
 
 # 8. Install W.AI
 echo "Installing W.AI..."
