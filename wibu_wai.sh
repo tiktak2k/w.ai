@@ -74,7 +74,7 @@ curl -fsSL https://app.w.ai/install.sh | bash
 
 # 10. Set environment variable
 echo "Setting W.AI API Key..."
-export W_AI_API_KEY=wsk-ZzGrmA6VIpZaigYKVGnNZTdML7s2-HwveB-ZHPLJ6cFEe9lCMd
+export W_AI_API_KEY=wsk-Kq9HXSPnydQLvTNQwKhPwFPa31o2-VWNGvRfRf4KhnYAgPJLZg
 
 # 11. Install PM2 globally
 echo "Installing PM2..."
@@ -93,7 +93,7 @@ module.exports = {
     watch: false,
     env: {
       NODE_ENV: 'production',
-      W_AI_API_KEY: 'wsk-ZzGrmA6VIpZaigYKVGnNZTdML7s2-HwveB-ZHPLJ6cFEe9lCMd'
+      W_AI_API_KEY: 'wsk-Kq9HXSPnydQLvTNQwKhPwFPa31o2-VWNGvRfRf4KhnYAgPJLZg'
     }
   }]
 };
